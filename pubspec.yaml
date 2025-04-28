@@ -1,0 +1,42 @@
+name: ecoscan
+description: "Une application mobile éco-responsable pour le recyclage et la réutilisation d'objets"
+publish_to: 'none'
+
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.2
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  
+  # Packages pour l'appareil photo et la gestion des images
+  camera: ^0.10.5+9
+  image_picker: ^1.0.7
+  image: ^3.3.0
+  path_provider: ^2.1.2
+  path: ^1.9.0
+  
+  # Packages pour la gestion d'état et la navigation
+  provider: ^6.1.2
+  go_router: ^14.1.0
+  
+  # Packages pour le stockage local (mise en cache des résultats)
+  shared_preferences: ^2.2.2
+  sqflite: ^2.3.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  
+  # Ajout des assets pour l'application
+  assets:
+    - assets/models/
+    - assets/images/
+    - assets/icons/

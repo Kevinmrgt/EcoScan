@@ -1,0 +1,12 @@
+diff --git a/android/build.gradle b/android/build.gradle
+index 22ded07..a19fe35 100644
+--- a/android/build.gradle
++++ b/android/build.gradle
+@@ -21,6 +21,7 @@ rootProject.allprojects {
+ 
+ apply plugin: 'com.android.library'
+ android {
++    namespace 'com.tfliteflutter.tfliteflutter'
+     compileSdkVersion 31
+     
+     defaultConfig {
