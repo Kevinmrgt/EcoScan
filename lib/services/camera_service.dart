@@ -1,10 +1,10 @@
 import 'dart:io';
 import 'package:camera/camera.dart';
-import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:image/image.dart' as img;
+import 'package:flutter/foundation.dart' show debugPrint;
 
 class CameraService {
   CameraController? controller;
@@ -34,13 +34,13 @@ class CameraService {
         await controller!.initialize();
       }
     } catch (e) {
-      print('Error initializing camera: $e');
+      debugPrint('Error initializing camera: $e');
     }
   }
 
   Future<String?> takePicture() async {
     if (controller == null || !controller!.value.isInitialized) {
-      print('Error: Camera controller not initialized');
+      debugPrint('Error: Camera controller not initialized');
       return null;
     }
 
@@ -55,7 +55,7 @@ class CameraService {
       
       return optimizedPath;
     } catch (e) {
-      print('Error taking picture: $e');
+      debugPrint('Error taking picture: $e');
       return null;
     }
   }
@@ -77,7 +77,7 @@ class CameraService {
       
       return optimizedPath;
     } catch (e) {
-      print('Error picking image: $e');
+      debugPrint('Error picking image: $e');
       return null;
     }
   }
@@ -115,7 +115,7 @@ class CameraService {
       
       return targetPath;
     } catch (e) {
-      print('Error during image optimization: $e');
+      debugPrint('Error during image optimization: $e');
       return imagePath;
     }
   }

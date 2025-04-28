@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:io';
-import 'package:path/path.dart' show join;
 import 'package:path_provider/path_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../models/scan_result.dart';
+import 'package:flutter/foundation.dart' show debugPrint;
 
 class CacheService {
   static const String _cacheKey = 'scan_results_cache';
@@ -50,7 +50,7 @@ class CacheService {
       // Sauvegarder le cache mis à jour
       await prefs.setStringList(_cacheKey, updatedCache);
     } catch (e) {
-      print('Error caching scan result: $e');
+      debugPrint('Error caching scan result: $e');
     }
   }
 
@@ -74,7 +74,7 @@ class CacheService {
       
       return null;
     } catch (e) {
-      print('Error retrieving cached result: $e');
+      debugPrint('Error retrieving cached result: $e');
       return null;
     }
   }
@@ -92,7 +92,7 @@ class CacheService {
           .map((item) => ScanResult.fromJson(jsonDecode(item)))
           .toList();
     } catch (e) {
-      print('Error retrieving all cached results: $e');
+      debugPrint('Error retrieving all cached results: $e');
       return [];
     }
   }
@@ -122,11 +122,11 @@ class CacheService {
       for (final file in tempFiles) {
         if (!cachedImagePaths.contains(file.path)) {
           await file.delete();
-          print('Deleted unused image: ${file.path}');
+          debugPrint('Deleted unused image: ${file.path}');
         }
       }
     } catch (e) {
-      print('Error cleaning up unused images: $e');
+      debugPrint('Error cleaning up unused images: $e');
     }
   }
 
@@ -139,7 +139,7 @@ class CacheService {
       // Nettoyer aussi les images
       await cleanupUnusedImages();
     } catch (e) {
-      print('Error clearing cache: $e');
+      debugPrint('Error clearing cache: $e');
     }
   }
 }

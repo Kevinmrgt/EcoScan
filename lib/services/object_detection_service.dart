@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:math';
-import 'package:flutter/services.dart';
 import '../models/scan_result.dart';
+import 'package:flutter/foundation.dart' show debugPrint;
 
 /// Service simulé pour la reconnaissance d'objets
 /// Utilisé pour le MVP en attendant l'intégration complète de TensorFlow Lite
@@ -31,7 +31,7 @@ class ObjectDetectionService {
   Future<void> initialize() async {
     // Simulation de l'initialisation
     await Future.delayed(const Duration(milliseconds: 500));
-    print('ObjectDetectionService mock initialized successfully');
+    debugPrint('ObjectDetectionService mock initialized successfully');
   }
   
   Future<ScanResult?> analyzeImage(String imagePath) async {
@@ -59,7 +59,7 @@ class ObjectDetectionService {
         timestamp: DateTime.now(),
       );
     } catch (e) {
-      print('Error during mock image analysis: $e');
+      debugPrint('Error during mock image analysis: $e');
       return null;
     }
   }

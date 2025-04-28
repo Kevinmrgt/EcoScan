@@ -54,8 +54,8 @@ class ResultScreen extends StatelessWidget {
           floatingActionButton: FloatingActionButton(
             onPressed: () => Navigator.pop(context),
             backgroundColor: Theme.of(context).colorScheme.secondary,
-            child: const Icon(Icons.camera_alt),
             tooltip: 'Scanner un autre objet',
+            child: const Icon(Icons.camera_alt),
           ),
         );
       },
@@ -67,7 +67,7 @@ class ResultScreen extends StatelessWidget {
       height: 200,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.black.withOpacity(0.1),
+        color: Colors.black.withAlpha(25), // Remplacé withOpacity par withAlpha
       ),
       child: Image.file(
         File(result.imagePath),
@@ -148,7 +148,7 @@ class ResultScreen extends StatelessWidget {
             tip.title,
             tip.description,
             tip.iconPath,
-            Colors.green.withOpacity(0.1),
+            Colors.green.withAlpha(25), // Remplacé withOpacity par withAlpha
             context,
           )),
           const Divider(height: 32),
@@ -183,7 +183,7 @@ class ResultScreen extends StatelessWidget {
               tip.title,
               tip.description,
               tip.iconPath,
-              Colors.blue.withOpacity(0.1),
+              Colors.blue.withAlpha(25), // Remplacé withOpacity par withAlpha
               context,
             );
             

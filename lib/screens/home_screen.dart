@@ -35,22 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
   
-  Future<void> _takePicture() async {
-    final imagePath = await _cameraService.takePicture();
-    if (imagePath != null && mounted) {
-      // Naviguer vers la caméra ou directement analyser l'image
-      final scanProvider = Provider.of<ScanProvider>(context, listen: false);
-      await scanProvider.analyzeImage(imagePath);
-      
-      if (mounted && scanProvider.lastScanResult != null) {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ResultScreen()),
-        );
-      }
-    }
-  }
-  
   Future<void> _pickImage() async {
     final imagePath = await _cameraService.pickImage();
     if (imagePath != null && mounted) {
